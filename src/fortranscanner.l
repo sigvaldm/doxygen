@@ -1110,7 +1110,6 @@ private                                 {
 
                                           // TYPE_SPEC is for old function style function result
                                           QCString result = QCString(yytext).stripWhiteSpace().lower();
-                                          /* QCString result = QCString(yytext).stripWhiteSpace(); */
                                           yyextra->current->type = result;
                                           yy_push_state(SubprogPrefix,yyscanner);
                                         }
@@ -1146,7 +1145,6 @@ private                                 {
 <Subprog>{ID}                           { yyextra->current->name = yytext;
                                           //cout << "1a==========> got " << yyextra->current->type << " " << yytext << " " << yyextra->lineNr << endl;
                                           yyextra->modifiers[yyextra->current_root][yyextra->current->name.lower()].returnName = yyextra->current->name.lower();
-                                          /* yyextra->modifiers[yyextra->current_root][yyextra->current->name].returnName = yyextra->current->name; */
 
                                           if (yyextra->ifType == IF_ABSTRACT || yyextra->ifType == IF_SPECIFIC)
                                           {
@@ -2405,7 +2403,6 @@ static void addSubprogram(yyscan_t yyscanner,const char *text)
   yyextra->subrCurrent.push_back(yyextra->current);
   yyextra->current->section = Entry::FUNCTION_SEC ;
   QCString subtype = text; subtype=subtype.lower().stripWhiteSpace();
-  /* QCString subtype = text; subtype=subtype.stripWhiteSpace(); */
   yyextra->functionLine = (subtype.find("function") != -1);
   yyextra->current->type += " " + subtype;
   yyextra->current->type = yyextra->current->type.stripWhiteSpace();
