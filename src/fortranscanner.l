@@ -513,7 +513,7 @@ SCOPENAME ({ID}{BS}"::"{BS})*
 
                                           // extract generic name
                                           QCString name = QCString(yytext).stripWhiteSpace();
-                                          name = name.right(name.length() - 9).stripWhiteSpace().lower();
+                                          name = name.right(name.length() - 9).stripWhiteSpace(); //.lower();
                                           addInterface(yyscanner,name, yyextra->ifType);
                                           startScope(yyscanner,yyextra->last_entry.get());
                                         }
@@ -866,7 +866,7 @@ private                                 {
                                           //cout << "5=========> got variable: " << yyextra->argType << "::" << yytext << endl;
                                           /* work around for bug in QCString.replace (QCString works) */
                                           QCString name=yytext;
-                                          name = name.lower();
+                                          /* name = name.lower(); */
                                           /* remember attributes for the symbol */
                                           yyextra->modifiers[yyextra->current_root][name.lower()] |= yyextra->currentModifiers;
                                           yyextra->argName= name;
